@@ -1,4 +1,3 @@
 # ConwaysGameOfLife
 Interactive Implementation of Conway's Game of Life
-![GitHub Logo](/example.png)
-Format: ![Alt Text](url)
+![GitHub Logo](/example.png) | width=50
