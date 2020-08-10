@@ -90,7 +90,7 @@ class Visuals:
         WINDOW_SIZE = [cols*(self.WIDTH+self.MARGIN), rows*(self.HEIGHT+self.MARGIN)]
         screen = pygame.display.set_mode(WINDOW_SIZE)
 
-        pygame.display.set_caption("Game of Life")
+        pygame.display.set_caption("Game of Life (Press Enter)")
 
         done = False
 
