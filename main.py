@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import Board
 import Representation as rep
-import SetRules
+import Rules
 import time
 from Visuals import Visuals
 
@@ -17,8 +17,9 @@ def getInput():
         6: "small_exploder",
         7: "spaceship",
         8: "tumbler",
-        9: "random",
-        10: "custom"
+        9: "unbounded_growth",
+        10: "custom",
+        11: "random"
     }
     rows = int(input("Enter number of rows "))
     cols = int(input("Enter number of cols "))
@@ -35,12 +36,12 @@ rows, cols, name = getInput()
 visualizer = Visuals(rows, cols)
 selection = visualizer.InitializeInputGrid(name=name)
 selection = np.array(visualizer.SetInput(selection))
-# np.save('./saved_configs/john_conway', selection)
+# np.save('./saved_configs/unbounded_growth', selection)
 
-rules = SetRules.SetRules()
+rules = Rules.SetRules()
 game = Board.Board(rep.Representation(selection), rules)
 t = time.time()
-result = game.begin_game(5000, visualizer)
+result = game.begin_game(5000, visualizer, boundary='wrap')
 print(time.time()-t)
 
 

@@ -47,6 +47,9 @@ class Visuals:
         elif(name == '10_cell_row'):
             grid = np.load('./saved_configs/10_cell_row.npy')
             flag = 1
+        elif(name == 'unbounded_growth'):
+            grid = np.load('./saved_configs/unbounded_growth.npy')
+            flag = 1
         elif(name == 'random'):
             grid = np.random.random((self.rows, self.cols))
             grid[grid >= 0.6] = 1
@@ -132,7 +135,7 @@ class Visuals:
         pygame.quit()
         return grid
 
-    def displayAnim(self, state, itns, rules):
+    def displayAnim(self, state, itns, rules, boundary):
 
         WINDOW_SIZE = [self.cols*(self.WIDTH+self.MARGIN),self.rows*(self.HEIGHT+self.MARGIN)]
         screen = pygame.display.set_mode(WINDOW_SIZE)
@@ -175,7 +178,7 @@ class Visuals:
 
                 prev_state = state.get_copy()
                 all_states[i] = prev_state.grid
-                state = state.apply_rules(rules)
+                state = state.apply_rules(rules, boundary)
 
             break
         return all_states

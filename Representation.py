@@ -1,11 +1,11 @@
 import numpy as np
 from scipy.signal import convolve2d
-import SetRules
+import Rules
 
 class Representation:
-    def __init__(self, grid, boundary='fill'):
+    def __init__(self, grid):
         self.grid = grid
-        self.neighbours = convolve2d(self.grid, np.ones((3,3)), mode='same', boundary=boundary)-self.grid
+        self.neighbours = None
 
     def get_copy(self):
         return Representation(self.grid.copy())
@@ -19,7 +19,7 @@ class Representation:
             return False
         return self.grid == other.grid
 
-    def apply_rules(self, rules):
-        neighbours = self.get_neighbours()
-        self.grid = rules.applyRules(self.grid, neighbours)
+    def apply_rules(self, rules, boundary):
+        self.neighbours = self.get_neighbours(boundary)
+        self.grid = rules.applyRules(self)
         return self

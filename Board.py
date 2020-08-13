@@ -10,9 +10,9 @@ class Board:
         self.initial_state = initial_state
         self.rules = rules
 
-    def begin_game(self, itns, visualizer):
+    def begin_game(self, itns, visualizer, boundary):
         state = self.initial_state
-        all_states = visualizer.displayAnim(state, itns, self.rules)
+        all_states = visualizer.displayAnim(state, itns, self.rules, boundary)
         return all_states
 
     def save_animation(self, array, filename):

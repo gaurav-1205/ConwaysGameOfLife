@@ -1,9 +1,11 @@
 import numpy as np
 
 class SetRules:
-    def applyRules(self, grid, neighbours):
+    # def applyRules(self, grid, neighbours):
+    def applyRules(self, state):
+        grid = state.grid
+        neighbours = state.neighbours
         ret_grid = grid.copy()
-        
         for i in range(grid.shape[0]):
             for j in range(grid.shape[1]):
                 if(neighbours[i][j] > 3 or neighbours[i][j] < 2):
